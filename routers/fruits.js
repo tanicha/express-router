@@ -30,4 +30,22 @@ router.get('/:id', (req, res) => {
     res.json(foundFruit)
 })
 
+router.post('/', (req, res) => {
+    fruits.push(req.body)
+    res.json(fruits)
+})
+
+router.patch('/:id', (req, res) => {
+    const id = req.params.id - 1
+    fruits[id].name = req.body.name
+    fruits[id].color = req.body.color
+    res.json(fruits)
+})
+
+router.delete('/:id', (req, res) => {
+    const deletedFruit = [req.params.id - 1]
+    fruits.splice(deletedFruit, 1)
+    res.send('Fruit has been removed!')
+})
+
 module.exports = router

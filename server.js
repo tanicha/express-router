@@ -4,10 +4,12 @@ const port = 3000
 const userRouter = require('./routers/users')
 const fruitRouter = require('./routers/fruits')
 
+app.use(express.json())
+app.use(express.urlencoded())
+
 // Express Routes
 
 app.use('/users', userRouter)
-console.log(userRouter)
 
 app.use('/fruits', fruitRouter)
 

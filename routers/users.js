@@ -30,4 +30,22 @@ router.get('/:id', (req, res) => {
     res.json(foundUser)
 })
 
+router.post('/', (req, res) => {
+    users.push(req.body)
+    res.json(users)
+})
+
+router.patch('/:id', (req, res) => {
+    const id = req.params.id - 1
+    users[id].name = req.body.name
+    users[id].age = req.body.age
+    res.json(users)
+})
+
+router.delete('/:id', (req, res) => {
+    const deletedUser = [req.params.id - 1]
+    users.splice(deletedUser, 1)
+    res.send('User has been removed!')
+})
+
 module.exports = router
